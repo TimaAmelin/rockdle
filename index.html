@@ -23,7 +23,7 @@
 
       <section class="clues" aria-label="Подсказки">
         <div class="clue" id="clue5"><span class="clue-number">05</span><div><strong>Первый факт</strong><p>Откроется после 5 попыток</p></div></div>
-        <div class="clue" id="clue10"><span class="clue-number">10</span><div><strong>Точный ориентир</strong><p>Откроется после 10 попыток</p></div></div>
+        <div class="clue" id="clue10"><span class="clue-number">10</span><div><strong>Следующий след</strong><p>Откроется после 10 попыток</p></div></div>
         <div class="clue" id="clue15"><span class="clue-number">15</span><div><strong>Почти разгадка</strong><p>Откроется после 15 попыток</p></div></div>
       </section>
 
@@ -47,7 +47,7 @@
     <p class="overline">КАК ИГРАТЬ</p><h2>Найди свой камень</h2>
     <p>Введи название камня. Цвет каждой ячейки покажет, насколько признак совпадает с ответом.</p>
     <div class="help-colors"><span class="exact">Зелёный · совпало</span><span class="near">Жёлтый · близко</span><span class="miss">Красный · мимо</span></div>
-    <p>Сравниваются тип, химический класс, семейство, твёрдость, типичный цвет, прозрачность и блеск. Стрелка у твёрдости показывает, выше или ниже искомое значение. После 5, 10 и 15 попыток откроются новые подсказки.</p>
+    <p>Сравниваются тип, химический класс, семейство, твёрдость, типичный цвет, прозрачность и блеск. Стрелка у твёрдости показывает, выше или ниже искомое значение. После 5, 10 и 15 попыток откроются факты о природе, истории и применении загаданного камня.</p>
     <p>Свойства упрощены для игры: один и тот же камень может иметь разные цвета и прозрачность. Твёрдость указана по шкале Мооса.</p>
     <p class="sources">Фотографии — из Википедии и Wikimedia Commons. Нажми на фото камня, чтобы открыть страницу источника с автором и лицензией. Свойства: <a href="https://pubs.usgs.gov/gip/gemstones/mineral.html" target="_blank" rel="noreferrer">USGS</a> и <a href="https://4cs.gia.edu/en-us/blog/mohs-scale/" target="_blank" rel="noreferrer">GIA</a>.</p>
   </dialog>
@@ -58,6 +58,6 @@
     <label for="creditSearch">Найти камень</label><input id="creditSearch" type="search" placeholder="Название камня…">
     <div id="creditsList" class="credits-list"></div>
   </dialog>
-  <script src="stones.js"></script><script src="images.js"></script><script src="app.js"></script>
+  <script src="stones.js"></script><script src="clues.js"></script><script src="images.js"></script><script src="app.js"></script>
 </body>
 </html>

@@ -88,10 +88,11 @@
   }
   function renderClues(answer) {
     const n=state.guesses.length;
+    const stoneClues=window.STONE_CLUES[answer.id];
     const clues=[
-      {limit:5,title:'Первый факт',text:answer.fact},
-      {limit:10,title:'Точный ориентир',text:`Это ${answer.kind.toLowerCase()} из группы «${answer.family}». Твёрдость — около ${String(answer.hardness).replace('.',',')} по Моосу.`},
-      {limit:15,title:'Почти разгадка',text:`Название начинается на «${answer.name[0]}» и содержит ${answer.name.replace(/[^а-яё]/gi,'').length} букв. Типичный цвет: ${answer.colors.join(' или ')}.`}
+      {limit:5,title:'Первый факт',text:stoneClues[0]},
+      {limit:10,title:'Следующий след',text:stoneClues[1]},
+      {limit:15,title:'Почти разгадка',text:stoneClues[2]}
     ];
     clues.forEach(({limit,title,text:content}) => {
       const node=$('clue'+limit), open=n>=limit;
@@ -135,7 +136,7 @@
     if ($('guessInput').disabled) return;
     const term=simplify($('guessInput').value);
     if(!term) {hideSuggestions();return;}
-    const matches=stones.filter(stone=>!state.guesses.includes(stone.id) && simplify(stone.name).includes(term)).slice(0,8);
+    const matches=stones.filter(stone=>!state.guesses.includes(stone.id) && simplify(stone.name).startsWith(term));
     if(!matches.length){hideSuggestions();return;}
     $('suggestions').innerHTML=matches.map(stone=>`<button class="suggestion" type="button" role="option" data-id="${stone.id}">${thumb(stone,false)}<span>${escapeHtml(stone.name)}</span><small>${escapeHtml(stone.family)}</small></button>`).join('');
     $('suggestions').hidden=false;$('guessInput').setAttribute('aria-expanded','true');
