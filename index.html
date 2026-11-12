@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111716">
+  <meta name="description" content="Rockdle — угадай камень дня по семи признакам. 200 камней, цветные сравнения и подсказки.">
+  <title>Rockdle — угадай камень</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Rockdle — главная"><span class="gem-logo" aria-hidden="true">◆</span>Rock<span>dle</span></a>
+      <div class="top-right"><span class="catalogue-count">200 камней</span><button class="help-trigger" id="helpButton" type="button" aria-label="Открыть правила">?</button></div>
+    </header>
+
+    <section class="game" aria-labelledby="pageTitle">
+      <div class="game-intro">
+        <div><p class="overline">ЕЖЕДНЕВНАЯ ГОЛОВОЛОМКА</p><h1 id="pageTitle">Угадай камень</h1><p class="subtitle" id="edition">КАМЕНЬ ДНЯ</p></div>
+        <div class="mode-switch" role="group" aria-label="Режим игры"><button id="dailyMode" class="mode active" type="button" aria-pressed="true">Сегодня</button><button id="practiceMode" class="mode" type="button" aria-pressed="false">Тренировка</button></div>
+      </div>
+
+      <section class="clues" aria-label="Подсказки">
+        <div class="clue" id="clue5"><span class="clue-number">05</span><div><strong>Первый факт</strong><p>Откроется после 5 попыток</p></div></div>
+        <div class="clue" id="clue10"><span class="clue-number">10</span><div><strong>Точный ориентир</strong><p>Откроется после 10 попыток</p></div></div>
+        <div class="clue" id="clue15"><span class="clue-number">15</span><div><strong>Почти разгадка</strong><p>Откроется после 15 попыток</p></div></div>
+      </section>
+
+      <form id="guessForm" class="guess-form" autocomplete="off">
+        <label for="guessInput">Введи название камня</label>
+        <div class="guess-control"><input id="guessInput" type="text" placeholder="Аметист, малахит, обсидиан…" aria-controls="suggestions" aria-expanded="false" spellcheck="false"><button id="submitGuess" type="submit" aria-label="Проверить камень">➜</button></div>
+        <div id="suggestions" class="suggestions" role="listbox" hidden></div>
+        <p id="formMessage" class="form-message" role="status"></p>
+      </form>
+
+      <div class="board-top"><div><h2>История попыток</h2><p><span id="attemptCount">0</span> <span id="attemptWord">попыток</span></p></div><div class="legend"><span><i class="dot exact"></i>Совпало</span><span><i class="dot near"></i>Близко</span><span><i class="dot miss"></i>Мимо</span></div></div>
+      <div id="emptyState" class="empty-state"><span aria-hidden="true">◇</span><p>Выбери любой камень, чтобы начать.</p></div>
+      <div id="resultList" class="result-list" aria-live="polite"></div>
+    </section>
+
+    <footer class="footer"><span>ROCKDLE · ОДИН КАМЕНЬ КАЖДЫЙ ДЕНЬ</span><div><button type="button" id="creditsButton">Авторы фото ↗</button><button type="button" id="howButton">Правила и источники ↗</button></div></footer>
+  </main>
+
+  <dialog id="helpDialog" class="help-dialog">
+    <form method="dialog"><button class="dialog-close" aria-label="Закрыть" type="submit">×</button></form>
+    <p class="overline">КАК ИГРАТЬ</p><h2>Найди свой камень</h2>
+    <p>Введи название камня. Цвет каждой ячейки покажет, насколько признак совпадает с ответом.</p>
+    <div class="help-colors"><span class="exact">Зелёный · совпало</span><span class="near">Жёлтый · близко</span><span class="miss">Красный · мимо</span></div>
+    <p>Сравниваются тип, химический класс, семейство, твёрдость, типичный цвет, прозрачность и блеск. Стрелка у твёрдости показывает, выше или ниже искомое значение. После 5, 10 и 15 попыток откроются новые подсказки.</p>
+    <p>Свойства упрощены для игры: один и тот же камень может иметь разные цвета и прозрачность. Твёрдость указана по шкале Мооса.</p>
+    <p class="sources">Фотографии — из Википедии и Wikimedia Commons. Нажми на фото камня, чтобы открыть страницу источника с автором и лицензией. Свойства: <a href="https://pubs.usgs.gov/gip/gemstones/mineral.html" target="_blank" rel="noreferrer">USGS</a> и <a href="https://4cs.gia.edu/en-us/blog/mohs-scale/" target="_blank" rel="noreferrer">GIA</a>.</p>
+  </dialog>
+  <dialog id="creditsDialog" class="help-dialog credits-dialog">
+    <form method="dialog"><button class="dialog-close" aria-label="Закрыть" type="submit">×</button></form>
+    <p class="overline">ФОТОГРАФИИ</p><h2>Авторы и лицензии</h2>
+    <p>Фотографии взяты из Wikimedia Commons. Нажми на название камня, чтобы открыть страницу файла.</p>
+    <label for="creditSearch">Найти камень</label><input id="creditSearch" type="search" placeholder="Название камня…">
+    <div id="creditsList" class="credits-list"></div>
+  </dialog>
+  <script src="stones.js"></script><script src="images.js"></script><script src="app.js"></script>
+</body>
+</html>
