@@ -88,6 +88,7 @@
   }
   function renderClues(answer) {
     const n=state.guesses.length;
+    const solved=state.guesses.includes(state.answer);
     const stoneClues=window.STONE_CLUES[answer.id];
     const clues=[
       {limit:5,title:'Первый факт',text:stoneClues[0]},
@@ -95,7 +96,7 @@
       {limit:15,title:'Почти разгадка',text:stoneClues[2]}
     ];
     clues.forEach(({limit,title,text:content}) => {
-      const node=$('clue'+limit), open=n>=limit;
+      const node=$('clue'+limit), open=solved || n>=limit;
       node.classList.toggle('unlocked',open);
       node.querySelector('strong').textContent=title;
       node.querySelector('p').textContent=open?content:`Ещё ${limit-n} ${word(limit-n)}`;
